@@ -20,13 +20,14 @@ import javax.servlet.http.HttpServletResponseWrapper;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 
+import com.daimler.testrepo.model.JsonResponse;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 @Component
 public class ResponseSignatureFilter implements Filter {
-	final private String signKey ="signature";   //hardcoded but needs to be configurable 
-	final private String signVal = "copyright signature"; //hardcoded but needs to be configurable
+	final private String signKey ="Copyright";   //hardcoded but needs to be configurable 
+	final private String signVal = "This feature is copyright by XYZ Co. and should not be distributed without notice"; //hardcoded but needs to be configurable
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse servletResponse, FilterChain chain)
 			throws IOException, ServletException {
@@ -67,6 +68,12 @@ public class ResponseSignatureFilter implements Filter {
 		// Method 2 : We can create new Json Response object and 
 		//            pass original message and copyright message to that 
 		
+//		JsonResponse jsonResponse = new JsonResponse();
+//		jsonResponse.setOriginalMessage(responseJson.toString());
+//		jsonResponse.setCopyright(signVal);
+//		String json = gson.toJson(jsonResponse);
+//		response.getWriter().print(json);
+//		response.getWriter().flush();
 	}
 
 }
